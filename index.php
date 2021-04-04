@@ -2,9 +2,10 @@
 
 
 <?php
-session_destroy();
+// session_destroy();
 if(isset($_SESSION["userLoggedIn"])){
-    echo "user is logged in as " . $_SESSION["userLoggedIn"];
+    echo "user is logged in as " . $userLoggedInObj->getName();
+    //  echo "user is logged in as ";
 }
 else{
     echo "not logged in";
