@@ -153,13 +153,15 @@ class VideoProcessor {
 
             $outputLog = array();
             exec($cmd, $outputLog, $returnCode);
+
+            /// Commented Out to Reduce Output Log When Uploading Video///
             
-            if($returnCode != 0) {
-                //Command failed
-                foreach($outputLog as $line) {
-                    echo $line . "<br>";
-                }
-            }
+            // if($returnCode != 0) {
+            //     //Command failed
+            //     foreach($outputLog as $line) {
+            //         echo $line . "<br>";
+            //     }
+            // }
 
             $query = $this->con->prepare("INSERT INTO thumbnails(videoId, filePath, selected)
                                         VALUES(:videoId, :filePath, :selected)");
