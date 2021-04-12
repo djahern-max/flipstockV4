@@ -57,10 +57,7 @@ class Account {
         $query->bindParam(":pic", $profilePic);
         
         return $query->execute();
-
-        // return true;
     }
-
     
     private function validateFirstName($fn) {
         if(strlen($fn) > 25 || strlen($fn) < 2) {

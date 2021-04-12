@@ -2,16 +2,14 @@
 
 
 <?php
-// session_destroy();
-if(isset($_SESSION["userLoggedIn"])){
-    echo "user is logged in as " . $userLoggedInObj->getName();
-    //  echo "user is logged in as ";
+if(isset($_SESSION["userLoggedIn"])) {
+    echo "user is logged in as " . $userLoggedInObj->getName();;
 }
-else{
+else {
     echo "not logged in";
 }
 ?>
 
+
 <?php require_once("includes/footer.php"); ?>
-                
                 
