@@ -1,5 +1,6 @@
 <?php
-require_once("includes/classes/ButtonProvider.php"); 
+require_once("includes/classes/ButtonProvider.php");
+
 class VideoInfoControls {
 
     private $video, $userLoggedInObj;
@@ -21,6 +22,8 @@ class VideoInfoControls {
     }
 
     private function createLikeButton() {
+
+
         $text = $this->video->getLikes();
         $videoId = $this->video->getId();
         $action = "likeVideo(this, $videoId)";

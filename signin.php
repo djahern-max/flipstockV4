@@ -20,11 +20,15 @@ if(isset($_POST["submitButton"])) {
 
 }
 
+
 function getInputValue($name) {
     if(isset($_POST[$name])) {
         echo $_POST[$name];
     }
 }
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,7 +57,7 @@ function getInputValue($name) {
 
             <div class="loginForm">
 
-                <form action="signIn.php" method="POST">
+            <form action="signIn.php" method="POST">
                     <?php echo $account->getError(Constants::$loginFailed); ?>
                     <input type="text" name="username" placeholder="Username" value="<?php getInputValue('username'); ?>" 
                     required autocomplete="off">

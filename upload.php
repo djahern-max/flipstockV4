@@ -21,7 +21,6 @@ $("form").submit(function() {
 </script>
 
 
-
 <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -34,8 +33,6 @@ $("form").submit(function() {
     </div>
   </div>
 </div>
-
-
 
 
 <?php require_once("includes/footer.php"); ?>
