@@ -4,7 +4,18 @@ function subscribe(userTo, userFrom, button) {
     return
   }
 
-  $.post('ajax/subscribe.php').done(function () {
-    console.log('done')
-  })
+  $.post('ajax/subscribe.php', { userTo: userTo, userFrom: userFrom }).done(
+    function (count) {
+      if (count != null) {
+        $(button).toggleClass('subscribe unsubscribe')
+
+        var buttonText = $(button).hasClass('subscribe')
+          ? 'SUBSCRIBE'
+          : 'SUBSCRIBED'
+        $(button).text(buttonText + ' ' + count)
+      } else {
+        alert('Something went wrong')
+      }
+    }
+  )
 }
