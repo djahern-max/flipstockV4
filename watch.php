@@ -1,8 +1,9 @@
 <?php 
 require_once("includes/header.php"); 
-require_once("includes/classes/VideoPlayer.php");
-require_once("includes/classes/VideoInfoSection.php");
-require_once("includes/classes/CommentSection.php");  
+require_once("includes/classes/VideoPlayer.php"); 
+require_once("includes/classes/VideoInfoSection.php"); 
+require_once("includes/classes/Comment.php"); 
+require_once("includes/classes/CommentSection.php"); 
 
 //use sesson destroy to force logout//
 // session_destroy();
@@ -38,10 +39,10 @@ $video->incrementViews();
 </div>
 
 <div class="suggestions">
-
-
-
-
+    <?php
+    $videoGrid = new VideoGrid($con, $userLoggedInObj);
+    echo $videoGrid->create(null, null, false);
+    ?>
 </div>
 
 
