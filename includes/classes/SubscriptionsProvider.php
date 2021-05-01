@@ -20,36 +20,36 @@ class SubscriptionsProvider {
             // $query->bindParam(2, "user2");
             // $query->bindParam(3, "user3");
 
-            // $condition = "";
-            // $i = 0;
+            $condition = "";
+            $i = 0;
 
-            // while($i < sizeof($subscriptions)) {
+            while($i < sizeof($subscriptions)) {
                 
-            //     if($i == 0) {
-            //         $condition .= "WHERE uploadedBy=?";
-            //     }
-            //     else {
-            //         $condition .= " OR uploadedBy=?";
-            //     }
-            //     $i++;
-            // }
+                if($i == 0) {
+                    $condition .= "WHERE uploadedBy=?";
+                }
+                else {
+                    $condition .= " OR uploadedBy=?";
+                }
+                $i++;
+            }
 
-            // $videoSql = "SELECT * FROM videos $condition ORDER BY uploadDate DESC";
-            // $videoQuery = $this->con->prepare($videoSql);
+            $videoSql = "SELECT * FROM videos $condition ORDER BY uploadDate DESC";
+            $videoQuery = $this->con->prepare($videoSql);
 
-            // $i = 1;
+            $i = 1;
 
-            // foreach($subscriptions as $sub) {
-            //     $videoQuery->bindParam($i, $subUsername);
-            //     $subUsername = $sub->getUsername();
-            //     $i++;
-            // }
+            foreach($subscriptions as $sub) {
+                $videoQuery->bindParam($i, $subUsername);
+                $subUsername = $sub->getUsername();
+                $i++;
+            }
 
-            // $videoQuery->execute();
-            // while($row = $videoQuery->fetch(PDO::FETCH_ASSOC)) {
-            //     $video = new Video($this->con, $row, $this->userLoggedInObj);
-            //     array_push($videos, $video);
-            // }
+            $videoQuery->execute();
+            while($row = $videoQuery->fetch(PDO::FETCH_ASSOC)) {
+                $video = new Video($this->con, $row, $this->userLoggedInObj);
+                array_push($videos, $video);
+            }
 
         }
 
