@@ -17,9 +17,9 @@ class NavigationMenuProvider {
         if(User::isLoggedIn()) {
             $menuHtml .= $this->createNavItem("Settings", "assets/images/icons/settings.png", "settings.php");
             $menuHtml .= $this->createNavItem("Log Out", "assets/images/icons/logout.png", "logout.php");
+            $menuHtml .= $this->createSubscriptionsSection();
         }
 
-        // Create subscriptions section
 
         return "<div class='navigationItems'>
                     $menuHtml
