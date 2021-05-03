@@ -20,9 +20,7 @@ $searchResultsProvider = new SearchResultsProvider($con, $userLoggedInObj);
 $videos = $searchResultsProvider->getVideos($term, $orderBy);
 
 $videoGrid = new VideoGrid($con, $userLoggedInObj);
-
 ?>
-
 <div class="largeVideoGridContainer">
 
     <?php
@@ -38,10 +36,19 @@ $videoGrid = new VideoGrid($con, $userLoggedInObj);
 
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 require_once("includes/footer.php");
 ?>
-
-
-
-

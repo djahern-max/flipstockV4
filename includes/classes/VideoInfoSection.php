@@ -25,7 +25,7 @@ class VideoInfoSection {
                     <h1>$title</h1>
 
                     <div class='bottomSection'>
-                        <span class='viewCount'>$views</span>
+                        <span class='viewCount'>$views views</span>
                         $controls
                     </div>
                 </div>";
@@ -44,7 +44,6 @@ class VideoInfoSection {
         else {
             $userToObject = new User($this->con, $uploadedBy);
             $actionButton = ButtonProvider::createSubscriberButton($this->con, $userToObject, $this->userLoggedInObj);
-            // $actionButton = "";
         }
         
         return "<div class='secondaryInfo'>
@@ -59,7 +58,7 @@ class VideoInfoSection {
                             </span>
                             <span class='date'>Published on $uploadDate</span>
                         </div>
-                            $actionButton
+                        $actionButton
                     </div>
 
                     <div class='descriptionContainer'>

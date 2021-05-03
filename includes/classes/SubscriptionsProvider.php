@@ -11,7 +11,6 @@ class SubscriptionsProvider {
     public function getVideos() {
         $videos = array();
         $subscriptions = $this->userLoggedInObj->getSubscriptions();
-
         if(sizeof($subscriptions) > 0) {
             
             // user1, user2, user3
@@ -36,12 +35,12 @@ class SubscriptionsProvider {
 
             $videoSql = "SELECT * FROM videos $condition ORDER BY uploadDate DESC";
             $videoQuery = $this->con->prepare($videoSql);
-
             $i = 1;
 
             foreach($subscriptions as $sub) {
-                $videoQuery->bindParam($i, $subUsername);
+
                 $subUsername = $sub->getUsername();
+                $videoQuery->bindValue($i, $subUsername);
                 $i++;
             }
 

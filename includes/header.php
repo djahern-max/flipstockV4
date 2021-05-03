@@ -1,10 +1,10 @@
 <?php 
 require_once("includes/config.php"); 
 require_once("includes/classes/ButtonProvider.php"); 
-require_once("includes/classes/User.php");
+require_once("includes/classes/User.php"); 
 require_once("includes/classes/Video.php"); 
 require_once("includes/classes/VideoGrid.php"); 
-require_once("includes/classes/VideoGridItem.php"); 
+require_once("includes/classes/VideoGridItem.php");
 require_once("includes/classes/SubscriptionsProvider.php"); 
 require_once("includes/classes/NavigationMenuProvider.php"); 
 
@@ -12,7 +12,6 @@ require_once("includes/classes/NavigationMenuProvider.php");
 
 $usernameLoggedIn = User::isLoggedIn() ? $_SESSION["userLoggedIn"] : "";
 $userLoggedInObj = new User($con, $usernameLoggedIn);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +26,7 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
     <script src="assets/js/commonActions.js"></script>
     <script src="assets/js/userActions.js"></script>
-    
+
 </head>
 <body>
     
@@ -68,5 +67,4 @@ $userLoggedInObj = new User($con, $usernameLoggedIn);
         </div>
 
         <div id="mainSectionContainer">
-        
             <div id="mainContentContainer">

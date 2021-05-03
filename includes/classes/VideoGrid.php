@@ -58,7 +58,6 @@ class VideoGrid {
     }
     
     public function createGridHeader($title, $showFilter) {
-
         $filter = "";
 
         if($showFilter) {
@@ -81,14 +80,13 @@ class VideoGrid {
                             <a href='$newUrl&orderBy=views'>Most viewed</a>
                         </div>";
         }
-  
+
         return "<div class='videoGridHeader'>
                         <div class='left'>
-                        $title
+                            $title
                         </div>
-                       
+                        $filter
                     </div>";
-
     }
 
     public function createLarge($videos, $title, $showFilter) {
@@ -99,7 +97,3 @@ class VideoGrid {
 
 }
 ?>
-
-
-    
-    

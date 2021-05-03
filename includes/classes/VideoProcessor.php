@@ -5,19 +5,20 @@ class VideoProcessor {
     private $sizeLimit = 500000000;
     private $allowedTypes = array("mp4", "flv", "webm", "mkv", "vob", "ogv", "ogg", "avi", "wmv", "mov", "mpeg", "mpg");
     
-    //private $ffmpegPath = "ffmpeg/mac/regular-xampp/ffmpeg"; // *** MAC (USING REGULAR XAMPP) ***
-    // private $ffmpegPath = "ffmpeg/mac/xampp-VM/ffmpeg"; // *** MAC (USING XAMPP VM) ***
+    // *** UNCOMMENT ONE OF THESE DEPENDING ON YOUR COMPUTER ***
+    private $ffmpegPath = "ffmpeg/mac/regular-xampp/ffmpeg"; // *** MAC (USING REGULAR XAMPP) ***
+    //private $ffmpegPath = "ffmpeg/mac/xampp-VM/ffmpeg"; // *** MAC (USING XAMPP VM) ***
     // private $ffmpegPath = "ffmpeg/linux/ffmpeg"; // *** LINUX ***
     // private $ffmpegPath = "ffmpeg/windows/ffmpeg.exe"; //  *** WINDOWS ***
 
-    private $ffmpegPath;
-
-    private $ffprobePath;
+    // *** ALSO UNCOMMENT ONE OF THESE DEPENDING ON YOUR COMPUTER ***
+    private $ffprobePath = "ffmpeg/mac/regular-xampp/ffprobe"; // *** MAC (USING REGULAR XAMPP) ***
+    //private $ffprobePath = "ffmpeg/mac/xampp-VM/ffprobe"; // *** MAC (USING XAMPP VM) ***
+    // private $ffprobePath = "ffmpeg/linux/ffprobe"; // *** LINUX ***
+    // private $ffprobePath = "ffmpeg/windows/ffprobe.exe"; //  *** WINDOWS ***
 
     public function __construct($con) {
         $this->con = $con;
-        $this->ffprobePath = realpath("ffmpeg/windows/ffprobe.exe");
-        $this->ffmpegPath = realpath("ffmpeg/windows/ffmpeg.exe");
     }
 
     public function upload($videoUploadData) {
@@ -58,6 +59,7 @@ class VideoProcessor {
             }
 
             return true;
+
         }
     }
 
@@ -153,15 +155,13 @@ class VideoProcessor {
 
             $outputLog = array();
             exec($cmd, $outputLog, $returnCode);
-
-            /// Commented Out to Reduce Output Log When Uploading Video///
             
-            // if($returnCode != 0) {
-            //     //Command failed
-            //     foreach($outputLog as $line) {
-            //         echo $line . "<br>";
-            //     }
-            // }
+            if($returnCode != 0) {
+                //Command failed
+                foreach($outputLog as $line) {
+                    echo $line . "<br>";
+                }
+            }
 
             $query = $this->con->prepare("INSERT INTO thumbnails(videoId, filePath, selected)
                                         VALUES(:videoId, :filePath, :selected)");
@@ -203,6 +203,5 @@ class VideoProcessor {
         $query->bindParam(":videoId", $videoId);
         $query->execute();
     }
-
 }
 ?>

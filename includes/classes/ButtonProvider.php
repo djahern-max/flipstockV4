@@ -19,16 +19,6 @@ class ButtonProvider {
                 </button>";
     }
 
-    public static function createUserProfileButton($con, $username) {
-        $userObj = new User($con, $username);
-        $profilePic = $userObj->getProfilePic();
-        $link = "profile.php?username=$username";
-
-        return "<a href='$link'>
-                    <img src='$profilePic' class='profilePicture'>
-                </a>";
-    }
-
     public static function createHyperlinkButton($text, $imageSrc, $href, $class) {
 
         $image = ($imageSrc == null) ? "" : "<img src='$imageSrc'>";
@@ -39,8 +29,18 @@ class ButtonProvider {
                         <span class='text'>$text</span>
                     </button>
                 </a>";
-    }   
+    }
 
+    public static function createUserProfileButton($con, $username) {
+        $userObj = new User($con, $username);
+        $profilePic = $userObj->getProfilePic();
+        $link = "profile.php?username=$username";
+
+        return "<a href='$link'>
+                    <img src='$profilePic' class='profilePicture'>
+                </a>";
+    }
+    
     public static function createEditVideoButton($videoId) {
         $href = "editVideo.php?videoId=$videoId";
 
@@ -50,7 +50,7 @@ class ButtonProvider {
                     $button
                 </div>";
     }
-
+    
     public static function createSubscriberButton($con, $userToObj, $userLoggedInObj) {
         $userTo = $userToObj->getUsername();
         $userLoggedIn = $userLoggedInObj->getUsername();

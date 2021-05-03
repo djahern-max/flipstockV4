@@ -1,5 +1,4 @@
 <?php
-
 class VideoPlayer {
 
     private $video;
@@ -23,5 +22,4 @@ class VideoPlayer {
     }
 
 }
-
 ?>
