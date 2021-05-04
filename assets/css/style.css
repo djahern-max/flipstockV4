@@ -697,14 +697,13 @@ a:hover {
 .coverPhotoContainer .coverPhoto {
   width: 100%;
   object-fit: cover;
-  max-height: 20%;
+  max-height: 150px;
   vertical-align: middle;
 }
 
 .coverPhotoContainer .channelName {
   position: absolute;
-  /* top: calc(50% - 40px); */
-  margin-top: 75px;
+  top: calc(50% - 40px);
   font-size: 50px;
   color: #fff;
   text-align: center;
@@ -712,7 +711,7 @@ a:hover {
   letter-spacing: 5px;
 }
 
-/* .profileHeader {
+.profileHeader {
   padding: 15px 100px 0 100px;
   display: flex;
   height: 100px;
@@ -764,4 +763,21 @@ a:hover {
   border: none;
   border-radius: 2px;
   cursor: pointer;
-} */
+}
+
+.profileContainer .channelContent {
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.nav-item a {
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.channelContent .section .values {
+  color: rgba(17, 17, 17, 0.6);
+  display: flex;
+  flex-direction: column;
+}
