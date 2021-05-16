@@ -15,7 +15,7 @@ try {
     $active_group = 'default';
     $query_builder = TRUE;
     // Connect to DB
-    $con = new PDO("mysql:dbname=heroku_e7268af48fdbee0;host=us-cdbr-east-03.cleardb.com", "bf20c28b62e85b", "23b244e6");
+    $con = new PDO("mysql:dbname=heroku_e7268af48fdbee0;host=localhost:us-cdbr-east-03.cleardb.com", "bf20c28b62e85b", "23b244e6");
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 }
