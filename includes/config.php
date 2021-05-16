@@ -15,7 +15,8 @@ try {
     $active_group = 'default';
     $query_builder = TRUE;
     // Connect to DB
-    $con = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+    $con = new PDO("mysql:dbname=flipstock;host=us-cdbr-east-03.cleardb.com", "bf20c28b62e85b", "23b244e6");
+    $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
 }
 catch (PDOException $e) {
