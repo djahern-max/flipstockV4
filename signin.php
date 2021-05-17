@@ -1,30 +1,22 @@
 <?php 
-require_once("includes/config.php");
-require_once("includes/classes/Account.php");
-require_once("includes/classes/Constants.php"); 
-require_once("includes/classes/FormSanitizer.php"); 
+<?php
+require_once("includes/header.php");
+require_once("includes/classes/TrendingProvider.php");
 
-$account = new Account($con);
+$trendingProvider = new TrendingProvider($con, $userLoggedInObj);
+$videos = $trendingProvider->getVideos();
 
-if(isset($_POST["submitButton"])) {
-    
-    $username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
-    $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
-
-    $wasSuccessful = $account->login($username, $password);
-
-    if($wasSuccessful) {
-        $_SESSION["userLoggedIn"] = $username;
-        header("Location: index.php");
+$videoGrid = new VideoGrid($con, $userLoggedInObj);
+?>
+<div class="largeVideoGridContainer">
+    <?php
+    if(sizeof($videos) > 0) {
+        echo $videoGrid->createLarge($videos, "Trending videos uploaded in the last week", false);
     }
-
-}
-
-function getInputValue($name) {
-    if(isset($_POST[$name])) {
-        echo $_POST[$name];
+    else {
+        echo "No trending videos to show";
     }
-}
+    ?>
 ?>
 <!DOCTYPE html>
 <html>
