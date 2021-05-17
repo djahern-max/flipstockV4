@@ -19,6 +19,6 @@ $query_builder = TRUE;
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 }
 catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    echo "Connection failed now: " . $e->getMessage();
 }
 ?>
